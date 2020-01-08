@@ -1,0 +1,42 @@
+import java.io.File;
+import java.io.FileInputStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.List;
+import java.util.Scanner;
+
+public class BufferRead {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		File f = new File("C://Users/Shubham/eclipse-workspace/Buffer/src/data/error.log");
+
+		try {
+		   FileInputStream inputStream = new FileInputStream(f);
+		   Scanner scanner = new Scanner(inputStream, "UTF-8");
+		   
+		   
+		   List<String>  line = Files.readAllLines
+		   (Paths.get("C://Users/Shubham/eclipse-workspace/Buffer/src/data/error.log"));
+		  
+		  int len = line.size();
+		  for (int i = 0; i < len; i++) {
+			  String s = line.get(i);
+			  
+				/*
+				 * int index1 = check.indexOf("["); int index2 = check.indexOf("]");
+				 */
+			  if(line.get(i).contains("[")) {
+			s = s.substring(s.indexOf("[") + 1);
+			s = s.substring(0, s.indexOf("]"));
+			System.out.println(s + "Check");
+			  }
+		}
+		   
+		 
+		}catch (Exception e) {
+			// TODO: handle exception
+		}
+	}
+
+}
